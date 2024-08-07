@@ -60,7 +60,9 @@ class WatsonxLLM {
         (o) => o.model_id === process.env.WATSONX_AI_MODEL
       );
       if (!obj) {
-        throw new Error(`wrong llm model configured: ${process.env.WATSONX_AI_MODEL} does not exist. available: ${response.result.resources.map(x => x.model_id)}`);
+        throw new Error(
+          `wrong llm model configured: ${process.env.WATSONX_AI_MODEL} does not exist. available: ${response.result.resources.map((x) => x.model_id)}`
+        );
       }
       if (process.env.WATSONX_TOKEN_LIMIT) {
         return Number(process.env.WATSONX_TOKEN_LIMIT) >
